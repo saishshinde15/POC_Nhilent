@@ -1,0 +1,22 @@
+modify_file_task:
+  description: >
+    Read the file located at {file_path} and make the following modifications: {modifications}.  
+    Ensure the generated Python code is clean, follows best practices, and is free of errors.  
+    The output should be a complete Python script that can be executed without issues.
+    The Python script should have code for saving the file after modifications.The modifications should be combined with the original file content.
+  expected_output: >
+    A well-structured Python script that correctly implements the required modifications  
+    to the file at {file_path}, ensuring efficiency and error handling.
+    The Python script should have code for saving the file after modifications.The modifications should be combined with the original file content.
+  agent: code_writer
+
+execute_and_save_task:
+  description: >
+    Execute the provided Python code and apply the modifications directly to {file_path}.  
+    Ensure that the modifications fully replace the necessary parts of the file while preserving integrity.  
+    After execution, generate a PDF report documenting the applied changes, execution results, and any errors encountered.  
+    Save the updated file and the PDF report in the directory.  
+  expected_output: >
+    - The modifications successfully integrated into {file_path}. 
+    - The updated file and the PDF report saved in the directory for future reference.  
+  agent: code_executor
