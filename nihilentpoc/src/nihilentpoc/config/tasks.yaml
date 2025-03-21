@@ -4,7 +4,9 @@ modify_file_task:
     The script should:
     - Extract content while preserving structure.
     - Modify tables and text as per the instructions.
-    - Save the modified PDF while keeping the original integrity.
+    - The modifications should be done within the file present at {file_path}.
+    - The modifications should be combined with the original file content.
+    - After modfications save the pdf as new.pdf
     - Include robust error handling and logging.
   expected_output: >
     A well-structured Python script that correctly implements the requested modifications using industry best practices.
@@ -22,4 +24,14 @@ execute_and_save_task:
     - Modified PDF with successful changes applied.
     - The updated file and the PDF report saved in the directory for future reference.  
     - Ensure the modified file is saved as {output_path} in a write-accessible directory.
+  agent: code_executor
+
+execute_and_save_task_main:
+  description: >
+    Execute the provided Python code without any errors.
+    Some important details:
+    -The file is present at {file_path}
+    -The modified pdf is saved as new.pdf
+  expected_output: >
+   An error free and accurate results, including execution output, error handling.
   agent: code_executor
