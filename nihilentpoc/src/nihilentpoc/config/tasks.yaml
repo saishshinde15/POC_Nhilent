@@ -31,6 +31,8 @@ execute_and_save_task_main:
     Execute the provided Python code without any errors.
     Some important details:
     -The file is present at {file_path}
+    - If the file is not found by the agent then use the directory_tool to locate it
+    - Use the directory_tool to save the modified file at {output_path}
     -The modified pdf is saved as new.pdf
   expected_output: >
    An error free and accurate results, including execution output, error handling.
