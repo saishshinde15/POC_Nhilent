@@ -1,0 +1,12 @@
+modify_file_task:
+  description: >
+    Extract text and tables from the PDF at {file_path}, apply modifications: {modifications}, and save the modified document while maintaining its original format.
+    The script should:
+    - Extract text and table contents while preserving the file structure.
+    - Use the directory_tool if the file path is not found
+    - Modify tables, text, or any specified content as per user instructions.
+    - Ensure that modifications seamlessly integrate with the existing content without altering the document's formatting.
+    - Implement robust error handling, logging, and validation to prevent data loss or corruption.
+  expected_output: >
+    The modified PDF file with all requested changes applied while retaining the original format.
+  agent: code_writer

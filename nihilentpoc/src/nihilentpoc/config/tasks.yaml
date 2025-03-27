@@ -1,30 +1,18 @@
 modify_file_task:
   description: >
-    Extract text and tables from the PDF at {file_path}, apply modifications: {modifications}, and generate a clean, documented Python script.
+    Write a python code to modify text and tables from the PDF at {file_path}, apply modifications: {modifications}, and save the modified document while maintaining its original format.
     The script should:
-    - Extract content while preserving structure.
-    - Modify tables and text as per the instructions.
-    - The modifications should be done within the file present at {file_path}.
-    - The modifications should be combined with the original file content.
-    - After modfications save the pdf as new.pdf
-    - Include robust error handling and logging.
+    - Modify text and table contents according to {modifications} while preserving the file structure.
+    - Use the directory_tool if the file path is not found
+    - Modify tables, text, or any specified content as per user instructions.
+    - Ensure that modifications seamlessly integrate with the existing content without altering the document's formatting.
+    - Implement robust error handling, logging, and validation to prevent data loss or corruption.
+    -In the code The final modified PDF should be saved as the the directory path of the directory_tool /new.pdf . Example: if the directory path is /Users/saish/Downloads/POC_Nhilent/nihilentpoc/src/nihilentpoc then store the modified PDF as /Users/saish/Downloads/POC_Nhilent/nihilentpoc/src/nihilentpoc/new.pdf
   expected_output: >
-    A well-structured Python script that correctly implements the requested modifications using industry best practices.
+    A well-structured Python script that correctly modifies the PDF document as per {modifications} and saves the updated file.
+    The final output should be the generated Python script, ready for execution.
   agent: code_writer
 
-execute_and_save_task:
-  description: >
-    Execute the generated Python script to apply modifications to {file_path}, verify changes, and generate a PDF report.
-    The process should:
-    - Execute the script in a controlled environment to prevent security risks.
-    - Log execution details, including modifications applied and errors encountered.
-    - Verify the integrity of the modified PDF by comparing pre- and post-modification data.
-    - Save a PDF report documenting the entire execution process.
-  expected_output: >
-    - Modified PDF with successful changes applied.
-    - The updated file and the PDF report saved in the directory for future reference.  
-    - Ensure the modified file is saved as {output_path} in a write-accessible directory.
-  agent: code_executor
 
 execute_and_save_task_main:
   description: >
@@ -32,8 +20,8 @@ execute_and_save_task_main:
     Some important details:
     -The file is present at {file_path}
     - If the file is not found by the agent then use the directory_tool to locate it
-    - Use the directory_tool to save the modified file at {output_path}
-    -The modified pdf is saved as new.pdf
   expected_output: >
-   An error free and accurate results, including execution output, error handling.
+   An error-free and accurate execution of the Python script, ensuring the PDF is correctly modified as per {modifications}.
+   Check if the final modified PDF is saved as the the directory path of the directory_tool /new.pdf
   agent: code_executor
+
